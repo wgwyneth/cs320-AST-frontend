@@ -1,0 +1,17 @@
+/*  src/Title.css  */
+.Header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 1em;
+    /* margin-bottom: 2em; */
+    background-color: #016FB9;
+    color: rgb(255, 255, 255);
+  }
+
+.logo_img {
+    width: auto;
+    height: 50px;
+    padding-right: 30px;
+}
