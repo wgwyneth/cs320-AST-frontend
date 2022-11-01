@@ -1,22 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import welcome from './assets/welcome_img.png';
-import  { redirect } from 'react-router-dom'
-
-async function login() {
-  var username = "Gerald_Cunningham@fluffybunnyconsulting.com";
-  var password = "cunninghamge"; 
-  const response = await fetch('http://localhost:9000/api/login', {
-    method: 'POST',
-    body: JSON.stringify({email: username, password: password}),
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
-  });
-  response.json().then((jsonObj) => console.log(jsonObj));
-}
+import { useNavigate } from "react-router-dom";
 
 export default function (props) {
+  let navigate = useNavigate(); 
+  let [username, setUsername] = useState("");
+  let [password, setPassword] = useState("");
+  const setUser = (usr) => {
+    setUsername(usr.target.value);
+  }
+  const setPass = (usr) => {
+    setPassword(usr.target.value);
+  }
+
   return (
     <div className="Auth-form-container">
          <img className="welcome_img" src={welcome}/>
@@ -29,6 +25,8 @@ export default function (props) {
               type="username"
               className="form-control mt-1"
               placeholder="Enter username"
+              value={username}
+              onChange={setUser}
             />
           </div>
           <div className="form-group mt-3">
@@ -37,10 +35,33 @@ export default function (props) {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
+              value={password}
+              onChange={setPass}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary" onClick={login()}>
+            <button type="button" className="btn btn-primary" onClick={async () => {
+                const response = await fetch('http://localhost:9000/api/login', {
+                  method: 'POST',
+                  body: JSON.stringify({email: username, password: password}),
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                  }
+                });
+                response.json().then((data) => {
+                  try{
+                    if (data[0].EmpID){
+                      console.log("authen");
+                      navigate('/');
+                    }
+                  }
+                  catch{
+                    console.log("wrong login");
+                    alert("Wrong Password!");
+                  }
+                });
+              }}>
               Submit
             </button>
           </div>
