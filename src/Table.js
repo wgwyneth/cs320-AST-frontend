@@ -1,8 +1,6 @@
 
 import React from 'react'
 import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'  // new
-
-
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
