@@ -53,7 +53,7 @@ export default function (props) {
                   try{
                     if (data[0].EmpID){
                       console.log("authen");
-                      navigate('/');
+                      navigate('/view');
                     }
                   }
                   catch{
