@@ -2,9 +2,6 @@ import React from 'react'
 import Table, { SelectColumnFilter } from './Table'  // new
 
 const getData = () => {
-    //eventually change so that frontend and backend are integrated
-    // const response = fetch('http://localhost:9000/api/goals/getAllGoals/1');
-    // const goal = response.json.then((data) => console.log(data));
     const data = [];
     fetch('http://localhost:9000/api/goals/getAllGoals/1')
     .then((response) => {
@@ -21,7 +18,8 @@ const getData = () => {
           else return response.json();
         })
         .then((data) => {
-          goals.push(data[0]);
+          if(data[0])
+            goals.push(data[0]);
         })
         .catch((error) => {
           console.log('error: ' + error);
