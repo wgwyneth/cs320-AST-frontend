@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 3px solid #888;
+    width: 25%;
+}
+/* The Close Button */
+.close:hover,
+.close:focus {
+    cursor: pointer;
+}
+.titleContainer {
+  background-color:#4b9ef4;
+}
+.title {
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    text-align: center
+}
+.sectionTitleContainer{
+    background-color:#ddeffc;
+}
+.sectionTitle{
+    font-size:20px; 
+    padding: 5px;
+    padding-left: 5px;
+}
+.textInput{
+    width: 80%; 
+    margin-left: 10px;
+}
+.dateInput{
+    margin-left: 10px;
+    width: 25%
+}
+.textArea{
+    margin-left: 10px; 
+    resize: none;
+}
+.dropdownInput{
+    margin-left: 10px; 
+}
+.smallTitle{
+    padding:5px
+}
+.updateTitle{
+    color: white; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+</style>
+</head>
+<body>
+<h2>Modal Example</h2>
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+  
+    <div class="titleContainer">
+        <h3 class="title">View/Manage Goal</h3>
+    </div>
+    
+    <label for="goalName">
+        <div class="sectionTitleContainer">
+            <p class="sectionTitle">
+                Goal Name:
+            </p>
+        </div>
+    </label>
+    <input readonly class="textInput" type="text" id="goalName" name="goalName" value="Goal Name Here">
+    
+    <label for="description">
+        <div class="sectionTitleContainer">
+            <p class="sectionTitle">
+                Description:
+            </p>
+        </div>
+    </label>
+    <textarea readonly class="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
+    
+    <br>
+    <br>
+    
+    <label class="sectionTitleContainer smallTitle" for="startdate">
+        Start Date:
+    </label>
+    <input readonly class="dateInput" type="date" id="startdate" name="startdate">
+    
+    <br>
+    <br>
+    
+    <label class="sectionTitleContainer smallTitle" style="padding-right: 10px" for="enddate">
+        End Date:
+    </label>
+    <input readonly class="dateInput" type="date" id="enddate" name="enddate">
+        
+    <br>
+    <br>
+    
+    <label class="sectionTitleContainer smallTitle" style="padding-right: 32px" for="status">
+        Status:
+    </label>
+    <select class="dropdownInput" name="status" id="status">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+    </select>
+    
+    <br>
+    <br>
+    
+    <label class="sectionTitleContainer smallTitle" style="padding-right: 12px" for="category">
+        Category:
+    </label>
+    <select class="dropdownInput" name="category" id="category">
+      <option value="one">One</option>
+      <option value="two">Two</option>
+      <option value="three">Three</option>
+    </select>
+    
+    <br>
+    
+    <label for="comment">
+        <div class="sectionTitleContainer">
+            <p class="sectionTitle">
+                Comment (optional):
+            </p>
+        </div>
+    </label>
+    <textarea class="textArea" id="comment" name="comment" rows="4" cols="50" maxlength="500">Enter comments here...</textarea>
+    
+    <br>
+    
+    <div class="close titleContainer">
+        <center>
+            <h3 class="updateTitle">
+                Update
+            </h3>
+        </center>
+    </div>
+  </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,10 @@
 import React from 'react'
 import Table, { SelectColumnFilter } from './Table'  // new
+import CreateGoalModal from './CreateGoalModal'
+import Modal from 'react-bootstrap/Modal';
+import { Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import { useState } from "react";
 
 const getData = () => {
     //eventually change so that frontend and backend are integrated
@@ -33,6 +38,9 @@ const getData = () => {
 }
 
 function App() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShowCreate = () => setShow(true);
 
   const columns = React.useMemo(() => [
     {

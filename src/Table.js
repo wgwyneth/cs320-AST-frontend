@@ -1,6 +1,16 @@
 
 import React from 'react'
 import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'  // new
+import { useState } from "react";
+import CreateGoalModal from './CreateGoalModal';
+import Modal from 'react-bootstrap/Modal';
+import { Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
+
+
+
+
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
@@ -64,6 +74,13 @@ export function SelectColumnFilter({
 }
 
 function Table({ columns, data }) {
+
+  // onClick for Create Goal Button
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShowCreate = () => setShow(!show);
+  
+
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -111,10 +128,15 @@ function Table({ columns, data }) {
             <div key={column.id}>
               <label for={column.id}>{column.render("Header")}: </label>
               {column.render("Filter")}
+
+              <button onClick={handleShowCreate}>Create Goal</button>
+            
+              <button id="myBtn">Manage Goal</button>
             </div>
           ) : null
         )
       )}
+
       <table {...getTableProps()} border="1">
         <thead>
           {headerGroups.map(headerGroup => (
@@ -189,6 +211,81 @@ function Table({ columns, data }) {
         <code>{JSON.stringify(state, null, 2)}</code>
         </pre>
       </div>
+
+      {show && <CreateGoalModal
+      content={<>
+       
+            <div id="myModal" className="modal"></div>
+                <div className="modal-content">
+                    <div className="titleContainer">
+                        <h3 className="title">Create Goal</h3>
+                    </div>
+
+                    <label className="sectionTitleContainer smallTitle" htmlfor="goalName">
+                        Goal Name:
+                    </label>
+
+                    <input className="textInput" type="text" id="goalName" name="goalName" defaultValue="Goal Name Here"></input>
+
+                    <label htmlfor="description">
+                        <div className="sectionTitleContainer">
+                            <p className="sectionTitle">
+                                Description:
+                            </p>
+                        </div>
+                    </label>
+                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
+
+                    <br></br>
+
+                    <label className="sectionTitleContainer smallTitle" htmlFor="startdate">
+                        Start Date:
+                    </label>
+                    <input className="dateInput" type="date" id="startdate" name="startdate"></input>
+
+                    <br></br>
+
+                    <label className="sectionTitleContainer smallTitle" style={{paddingRight:10}} htmlfor="enddate">
+                        End Date:
+                    </label>
+                    <input className="dateInput" type="date" id="enddate" name="enddate"></input>
+
+
+                    <br></br>
+
+                    <label className="sectionTitleContainer smallTitle" style={{paddingRight:32}} htmlfor="status">
+                        Status:
+                    </label>
+
+
+                    <select className="dropdownInput" name="status" id="status" >
+                        <option value="Active">Active</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Incomplete">Incomplete</option>
+                    </select>
+
+                    <br></br>
+
+                    <label className="sectionTitleContainer smallTitle" style={{paddingRight:12}} htmlfor="category">
+                        Category:
+                    </label>
+                    <select className="dropdownInput" name="category" id="category">
+                        <option value="Personal">Personal</option>
+                        <option value="Performance">Performance</option>
+                        <option value="Developmental">Developmental</option>
+                    </select>
+                    <br></br>
+                    <div className="close titleContainer">
+                    <center>
+                        <h3 className="updateTitle" onClick={handleClose}>
+                            Finish
+                        </h3>
+                    </center>
+                    </div>
+            </div>
+      </>}
+      handleClose={handleShowCreate}
+      />}
     </>
   )
 }
