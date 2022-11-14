@@ -13,8 +13,18 @@ export default function (props) {
     setPassword(usr.target.value);
   }
 
+  const setCookieFunction = (value) => {
+    localStorage.setItem('EmpID', value)
+  }
+
+  const loggedIn = () => {
+    if(localStorage.getItem('EmpID')){
+      navigate('/view');
+    }
+  }
+
   return (
-    <div className="Auth-form-container">
+    <div className="Auth-form-container" onLoad={loggedIn}>
          <img className="welcome_img" src={welcome}/>
       <form className="Auth-form">
         <div className="Auth-form-content">
@@ -52,6 +62,7 @@ export default function (props) {
                 response.json().then((data) => {
                   try{
                     if (data[0].EmpID){
+                      setCookieFunction(data[0].EmpID);
                       console.log("authen");
                       navigate('/view');
                     }
