@@ -2,7 +2,7 @@ import React from "react";
 import "./createGoalStyle.css"
 import { useState } from "react";
 
-const CreateGoalModal = props => {
+const EditGoalModal = props => {
 
     return(
         <>
@@ -10,14 +10,14 @@ const CreateGoalModal = props => {
                 <div className="modal-content">
 
                     <div className="titleContainer">
-                        <h3 className="title">Create Goal</h3>
+                        <h3 className="title">Manage Goal</h3>
                     </div>
 
                     <label className="sectionTitleContainer smallTitle" htmlfor="goalName">
                         Goal Name:
                     </label>
 
-                    <input className="textInput" type="text" id="goalName" name="goalName" defaultValue="Goal Name Here"></input>
+                    <input readOnly className="textInput" type="text" id="goalName" name="goalName" defaultValue="Goal Name Here"></input>
 
                     <label htmlfor="description">
                         <div className="sectionTitleContainer">
@@ -27,7 +27,7 @@ const CreateGoalModal = props => {
                         </div>
                     </label>
 
-                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
+                    <textarea readOnly className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
 
                     <br></br>
 
@@ -35,7 +35,7 @@ const CreateGoalModal = props => {
                         Start Date:
                     </label>
 
-                    <input className="dateInput" type="date" id="startdate" name="startdate"></input>
+                    <input readOnly className="dateInput" type="date" id="startdate" name="startdate"></input>
 
                     <br></br>
 
@@ -43,7 +43,7 @@ const CreateGoalModal = props => {
                         End Date:
                     </label>
 
-                    <input className="dateInput" type="date" id="enddate" name="enddate"></input>
+                    <input readOnly className="dateInput" type="date" id="enddate" name="enddate"></input>
 
                     <br></br>
 
@@ -71,6 +71,18 @@ const CreateGoalModal = props => {
 
                     <br></br>
 
+                    <label htmlfor="comments">
+                        <div className="sectionTitleContainer">
+                            <p className="comments">
+                                Description:
+                            </p>
+                        </div>
+                    </label>
+
+                    <textarea className="textArea" id="comments" name="comments" rows="4" cols="50" maxlength="500">Enter comments here...</textarea>
+
+                    <br></br>
+
                     <div className="close-titleContainer">
                       <center>
                           <h3 className="updateTitle" onClick={props.handleClose}>
@@ -85,4 +97,4 @@ const CreateGoalModal = props => {
       </>
     );
 }
-export default CreateGoalModal;
+export default EditGoalModal;
