@@ -215,8 +215,9 @@ function Table({ columns, data }) {
       {show && <CreateGoalModal
       content={<>
        
-            <div id="myModal" className="modal"></div>
+              <div id="myModal" className="modal">
                 <div className="modal-content">
+
                     <div className="titleContainer">
                         <h3 className="title">Create Goal</h3>
                     </div>
@@ -229,11 +230,12 @@ function Table({ columns, data }) {
 
                     <label htmlfor="description">
                         <div className="sectionTitleContainer">
-                            <p className="sectionTitle">
+                            <p className="description">
                                 Description:
                             </p>
                         </div>
                     </label>
+
                     <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
 
                     <br></br>
@@ -241,6 +243,7 @@ function Table({ columns, data }) {
                     <label className="sectionTitleContainer smallTitle" htmlFor="startdate">
                         Start Date:
                     </label>
+
                     <input className="dateInput" type="date" id="startdate" name="startdate"></input>
 
                     <br></br>
@@ -248,15 +251,14 @@ function Table({ columns, data }) {
                     <label className="sectionTitleContainer smallTitle" style={{paddingRight:10}} htmlfor="enddate">
                         End Date:
                     </label>
-                    <input className="dateInput" type="date" id="enddate" name="enddate"></input>
 
+                    <input className="dateInput" type="date" id="enddate" name="enddate"></input>
 
                     <br></br>
 
                     <label className="sectionTitleContainer smallTitle" style={{paddingRight:32}} htmlfor="status">
                         Status:
                     </label>
-
 
                     <select className="dropdownInput" name="status" id="status" >
                         <option value="Active">Active</option>
@@ -269,20 +271,26 @@ function Table({ columns, data }) {
                     <label className="sectionTitleContainer smallTitle" style={{paddingRight:12}} htmlfor="category">
                         Category:
                     </label>
+
                     <select className="dropdownInput" name="category" id="category">
                         <option value="Personal">Personal</option>
                         <option value="Performance">Performance</option>
                         <option value="Developmental">Developmental</option>
                     </select>
+
                     <br></br>
-                    <div className="close titleContainer">
-                    <center>
-                        <h3 className="updateTitle" onClick={handleClose}>
-                            Finish
-                        </h3>
-                    </center>
+
+                    <div className="close-titleContainer">
+                      <center>
+                          <h3 className="updateTitle" onClick={handleClose}>
+                              Finish
+                          </h3>
+                      </center>
                     </div>
+
+                </div>  
             </div>
+          
       </>}
       handleClose={handleShowCreate}
       />}

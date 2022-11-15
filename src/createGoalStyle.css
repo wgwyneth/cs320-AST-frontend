@@ -1,7 +1,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
+.modal{
+    display: flex; /*Hidden by default*/
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -15,10 +15,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #F5F5F5;
     margin: auto;
     border: 3px solid #888;
-    width: 25%;
+    width: 50%;
+    border-radius: 25px;
 }
 /* The Close Button */
 .close:hover,
@@ -26,15 +27,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
     cursor: pointer;
 }
 .titleContainer {
-  background-color:#4b9ef4;
+  background-color:#F5F5F5;
+  border-radius: 22px;
 }
+
 .title {
     padding-top: 15px; 
     padding-bottom: 15px;
-    text-align: center
+    text-align: center;
 }
 .sectionTitleContainer{
-    background-color:#ddeffc;
+    background-color:#F5F5F5;
 }
 .sectionTitle{
     font-size:20px; 
@@ -64,3 +67,31 @@ body {font-family: Arial, Helvetica, sans-serif;}
     padding-top: 5px; 
     padding-bottom: 5px;
 }
+.close-titleContainer {
+    background-color:#30CEBB;
+    border-radius: 22px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+    cursor:pointer;
+  }
+  input[type=text]{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #0a0a0a;
+     color: #080808;
+     width: 250px;
+     height: 30px;
+     padding-left: 0px;
+    }
+
+    .description{
+        background: #f1f1f1;
+        padding: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -o-border-radius: 10px;
+        -ms-border-radius: 10px;
+        border-radius: 10px;
+    }
