@@ -23,7 +23,12 @@ class View extends React.Component {
           })
           .then((data) => {
             if(data[0])
-              goals.push(data[0]);
+              {
+                data[0].StartDate = (data[0].StartDate.toString().split('T')[0]);
+                data[0].EndDate = (data[0].EndDate.toString().split('T')[0]);
+                // data[0].StartDate = data[0].StartDate
+                goals.push(data[0]);
+              }
           })
           .catch((error) => {
             console.log('error: ' + error);
