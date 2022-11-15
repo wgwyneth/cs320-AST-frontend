@@ -1,0 +1,97 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+/* The Modal (background) */
+.modal{
+    display: flex; /*Hidden by default*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+    background-color: #F5F5F5;
+    margin: auto;
+    border: 3px solid #888;
+    width: 50%;
+    border-radius: 25px;
+}
+/* The Close Button */
+.close:hover,
+.close:focus {
+    cursor: pointer;
+}
+.titleContainer {
+  background-color:#F5F5F5;
+  border-radius: 22px;
+}
+
+.title {
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    text-align: center;
+}
+.sectionTitleContainer{
+    background-color:#F5F5F5;
+}
+.sectionTitle{
+    font-size:20px; 
+    padding: 5px;
+    padding-left: 5px;
+}
+.textInput{
+    width: 50%; 
+    margin-left: 10px;
+}
+.dateInput{
+    margin-left: 10px;
+    width: 25%
+}
+.textArea{
+    margin-left: 10px; 
+    resize: none;
+}
+.dropdownInput{
+    margin-left: 10px; 
+}
+.smallTitle{
+    padding:5px
+}
+.updateTitle{
+    color: white; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+.close-titleContainer {
+    background-color:#30CEBB;
+    border-radius: 22px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+    cursor:pointer;
+  }
+  input[type=text]{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #0a0a0a;
+     color: #080808;
+     width: 250px;
+     height: 30px;
+     padding-left: 0px;
+    }
+
+    .description{
+        background: #f1f1f1;
+        padding: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -o-border-radius: 10px;
+        -ms-border-radius: 10px;
+        border-radius: 10px;
+    }

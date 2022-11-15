@@ -1,6 +1,16 @@
 
 import React from 'react'
 import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'  // new
+import { useState } from "react";
+import CreateGoalModal from './CreateGoalModal';
+import Modal from 'react-bootstrap/Modal';
+import { Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
+
+
+
+
 // Define a default UI for filtering
 function GlobalFilter({
   preGlobalFilteredRows,
@@ -64,6 +74,13 @@ export function SelectColumnFilter({
 }
 
 function Table({ columns, data }) {
+
+  // onClick for Create Goal Button
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShowCreate = () => setShow(!show);
+  
+
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -111,10 +128,15 @@ function Table({ columns, data }) {
             <div key={column.id}>
               <label for={column.id}>{column.render("Header")}: </label>
               {column.render("Filter")}
+
+              <button onClick={handleShowCreate}>Create Goal</button>
+            
+              <button id="myBtn">Manage Goal</button>
             </div>
           ) : null
         )
       )}
+
       <table {...getTableProps()} border="1">
         <thead>
           {headerGroups.map(headerGroup => (
@@ -189,6 +211,9 @@ function Table({ columns, data }) {
         {/* <code>{JSON.stringify(state, null, 2)}</code> */}
         </pre>
       </div>
+
+      {show && <CreateGoalModal handleClose={handleShowCreate}
+      />}
     </>
   )
 }

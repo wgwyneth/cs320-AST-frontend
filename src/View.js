@@ -5,7 +5,6 @@ class View extends React.Component {
   constructor(props){
     super(props);
     this.state={data: [], isLoaded: false};
-
     const getData = async () => {
       var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/1')
       .then((response) => {
@@ -44,7 +43,6 @@ class View extends React.Component {
   
   render() {
     const {goals, isLoaded} = this.state;
-
     const columns = [
       {
         Header: "GoalID",
