@@ -1,106 +1,94 @@
-import React from 'react'
-import Table, { SelectColumnFilter } from './Table'  // new
-import CreateGoalModal from './CreateGoalModal'
-import Modal from 'react-bootstrap/Modal';
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import { useState } from "react";
+import React, {useEffect} from 'react'
+import Table, { SelectColumnFilter } from './Table'
 
-const getData = () => {
-    const data = [];
-    fetch('http://localhost:9000/api/goals/getAllGoals/1')
-    .then((response) => {
-      if(!response.ok) throw new Error(response.status);
-      else return response.json();
-    })
-    .then((data) => {
-      var goals = [];
-      for (var d in data){
-        var api = "http://localhost:9000/api/goals/get/" + d;
-        fetch(api)
-        .then((response) => {
-          if(!response.ok) throw new Error(response.status);
-          else return response.json();
-        })
-        .then((data) => {
-          if(data[0])
-            goals.push(data[0]);
-        })
-        .catch((error) => {
-          console.log('error: ' + error);
-        }); 
+class View extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={data: [], isLoaded: false};
+    const getData = async () => {
+      var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/1')
+      .then((response) => {
+        if(!response.ok) throw new Error(response.status);
+        else return response.json();
+      })
+      .then(async (data) => {
+        var goals = [];
+        for (var i = 0; i<data.length; i++){
+          var api = "http://localhost:9000/api/goals/get/" + data[i].GoalID;
+          var goal = await fetch(api)
+          .then((response) => {
+            if(!response.ok) throw new Error(response.status);
+            else return response.json();
+          })
+          .then((data) => {
+            if(data[0])
+              {
+                data[0].StartDate = (data[0].StartDate.toString().split('T')[0]);
+                data[0].EndDate = (data[0].EndDate.toString().split('T')[0]);
+                // data[0].StartDate = data[0].StartDate
+                goals.push(data[0]);
+              }
+          })
+          .catch((error) => {
+            console.log('error: ' + error);
+          });
+        }
+        this.setState({data: goals, isLoaded: true});
+        return goals
+      })
+      return dataToGet;
+    }
+    getData();
+  }
+  
+  render() {
+    const {goals, isLoaded} = this.state;
+    const columns = [
+      {
+        Header: "GoalID",
+        accessor: 'GoalID',
+      },
+      {
+        Header: "Employee ID",
+        accessor: 'EmpID',
+        Filter: SelectColumnFilter,
+        filter: 'inclucdes'
+      },
+      {
+        Header: "Start Date",
+        accessor: 'StartDate'
+      },
+      {
+        Header: "End Date",
+        accessor: 'EndDate',
+      },
+      {
+        Header: "Goal Type",
+        accessor: "GoalType"
+      },
+      {
+        Header: "Status",
+        accessor: "Status"
+      },
+      {
+        Header: "Description",
+        accessor: 'Description'
+      },
+      {
+        Header: "Goal Name",
+        accessor: 'goalname'
       }
-      return goals;
-    })
-    .catch((error) => {
-      console.log('error: ' + error);
-    });
-
-  // data = [
-  //   {
-  //       name: 'Create Table',
-  //       desc: 'Create a react goalview talble',
-  //       status: 'Complete',
-  //       date: '11/1', 
-  //   },
-  //   {
-  //       name: 'Create Stylesheet',
-  //       desc: 'Create a stylesheet w/ ukg guide',
-  //       status: 'Active',
-  //       date: '11/3'
-  //   },
-  //   {
-  //       name: "Integrate Frontend + Backend",
-  //       desc: 'Integrate frontend with backend',
-  //       status: 'Active',
-  //       date: '11/12'
-  //   },
-  //   {
-  //       name: "Create secure password",
-  //       desc: 'Store passwords in a more secure database',
-  //       status: 'Inactive',
-  //       date: '11/1'
-  //   }
-  // ]
-  return [...data, ...data, ...data, ...data]
+    ]
+    
+    return (
+      <>
+        <h1>My Goals</h1>
+        <div>
+          <Table columns={columns} data={this.state.data} />
+        </div>
+      </>
+    );
+  }
 }
 
-function App() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShowCreate = () => setShow(true);
-
-  const columns = React.useMemo(() => [
-    {
-      Header: "Name",
-      accessor: 'name',
-    },
-    {
-      Header: "Description",
-      accessor: 'desc',
-    },
-    {
-      Header: "Status",
-      accessor: 'status',
-      Filter: SelectColumnFilter,
-      filter: 'includes'
-    },
-    {
-      Header: "Due by Date",
-      accessor: 'date',
-    },
-  ], [])
-
-  const data = React.useMemo(() => getData(), [])
-
-  return (
-    <>
-      <h1>My Goals</h1>
-      <div>
-        <Table columns={columns} data={data} />
-      </div>
-    </>
-  );
-}
-
-export default App;
+export default View;
