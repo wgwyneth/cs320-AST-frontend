@@ -182,11 +182,11 @@ function Table({ columns, data }) {
             </option>
           ))}
         </select>
-      </div>
+      {/* </div>
       Outputs filter object for debugging purposes
-      <div>
+      <div> */}
        <pre>
-        <code>{JSON.stringify(state, null, 2)}</code>
+        {/* <code>{JSON.stringify(state, null, 2)}</code> */}
         </pre>
       </div>
     </>
