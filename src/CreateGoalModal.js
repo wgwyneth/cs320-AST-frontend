@@ -3,6 +3,38 @@ import "./createGoalStyle.css"
 import { useState } from "react";
 
 const CreateGoalModal = props => {
+    let [goalname, setGoalname] = useState("");
+    let [description, setDescription] = useState("");
+    let [startdate, setStartdate] = useState("");
+    let [enddate, setEnddate] = useState("");
+    let [status, setStatus] = useState("");
+    let [category, setCategory] = useState("");
+
+    const setName = (usr) => {
+        setGoalname(usr.target.value);
+    }
+
+    const setDesc = (usr) => {
+        setDescription(usr.target.value);
+    }
+
+    const setStart = (usr) => {
+        setStartdate(usr.target.value);
+    }
+
+    const setEnd = (usr) => {
+        setEnddate(usr.target.value);
+    }
+
+    const setStat = (usr) => {
+        setStatus(usr.target.value);
+    }
+
+    const setCat = (usr) => {
+        setCategory(usr.target.value);
+    }
+
+
 
     return(
         <>
@@ -17,7 +49,7 @@ const CreateGoalModal = props => {
                         Goal Name:
                     </label>
 
-                    <input className="textInput" type="text" id="goalName" name="goalName" defaultValue="Goal Name Here"></input>
+                    <input className="textInput" type="text" id="goalName" name="goalName" defaultValue="Goal Name Here" value={goalname} onChange={setName}></input>
 
                     <label htmlfor="description">
                         <div className="sectionTitleContainer">
@@ -27,7 +59,7 @@ const CreateGoalModal = props => {
                         </div>
                     </label>
 
-                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500">This is my goal description</textarea>
+                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500" value={description} onChange={setDesc}>This is my goal description</textarea>
 
                     <br></br>
 
@@ -35,7 +67,7 @@ const CreateGoalModal = props => {
                         Start Date:
                     </label>
 
-                    <input className="dateInput" type="date" id="startdate" name="startdate"></input>
+                    <input className="dateInput" type="date" id="startdate" name="startdate" value={startdate} onChange={setStart}></input>
 
                     <br></br>
 
@@ -43,7 +75,7 @@ const CreateGoalModal = props => {
                         End Date:
                     </label>
 
-                    <input className="dateInput" type="date" id="enddate" name="enddate"></input>
+                    <input className="dateInput" type="date" id="enddate" name="enddate" value={enddate} onChange={setEnd}></input>
 
                     <br></br>
 
@@ -73,7 +105,40 @@ const CreateGoalModal = props => {
 
                     <div className="close-titleContainer">
                       <center>
-                          <h3 className="updateTitle" onClick={props.handleClose}>
+                          <h3 className="updateTitle" onClick={async () => {
+                            var stat = document.getElementById("status");
+                            var cat = document.getElementById("category");
+                            var statVal = stat.value;
+                            var catVal = cat.value;
+                            var empid = localStorage.getItem('EmpID');
+                            console.log(empid);
+                            console.log(startdate);
+                            console.log(enddate);
+                            console.log(description);
+                            console.log(catVal);
+                            console.log(statVal);
+                            console.log(goalname);
+                            const response = await fetch('http://localhost:9000/api/goals/create', {
+                            method: 'POST',
+                            body: JSON.stringify({empid: empid, startdate: startdate, enddate: enddate, description: description, goaltype: catVal, status: statVal, goalname: goalname}),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                            });
+                            response.json().then((data) => {
+                            try{
+                                if (data.goalid){
+                                    props.handleClose()
+                                }
+                            }
+                            catch{
+                                console.log("error in creating goal");
+                                alert("Wrong Password!");
+                                props.handleClose()
+                            }
+                            });
+                        }}>
                               Finish
                           </h3>
                       </center>
