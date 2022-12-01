@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import Table, { SelectColumnFilter } from './Table'
+import Comments from './Comments';
 
 class View extends React.Component {
   constructor(props){

@@ -4,13 +4,11 @@ import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, use
 import { useState } from "react";
 import CreateGoalModal from './CreateGoalModal';
 import EditGoalModal from './EditGoalModal';
+import SelectGoalActionModal from './SelectGoalAction';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-
-
-
-
+import Comments from './Comments';
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -79,7 +77,8 @@ function Table({ columns, data }) {
   // onClick for Create Goal Button
   const [showCreateGoalModal, setShowCreateGoalModal] = useState(false);
   const [showEditGoalModal, setShowEditGoalModal] = useState(false);
-  
+  const [showGoalActionModal, setShowGoalActionModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
 
   // Use the state and functions returned from useTable to build your UI
   const {
@@ -129,7 +128,7 @@ function Table({ columns, data }) {
               <label for={column.id}>{column.render("Header")}: </label>
               {column.render("Filter")}
               <button onClick={() => setShowCreateGoalModal(true)}>Create Goal</button>
-              <button onClick={() => setShowEditGoalModal(true)}>Manage Goal</button>
+              <button onClick={() => setShowGoalActionModal(true)}>Manage Goal</button>
             </div>
           ) : null
         )
@@ -211,7 +210,10 @@ function Table({ columns, data }) {
       </div>  
         {/* {show && <CreateGoalModal handleClose={handleShowCreate} */}
         {showCreateGoalModal && <CreateGoalModal handleClose={() => {setShowCreateGoalModal(false)}}/>}
+        {showGoalActionModal && <SelectGoalActionModal setShowCommentModal = {setShowCommentModal} setShowEditGoalModal = {setShowEditGoalModal} handleClose={() => {setShowGoalActionModal(false)}}/>}
+        {showCommentModal && <Comments GoalID = {1} handleClose={() => setShowCommentModal(false)} />}
         {showEditGoalModal && <EditGoalModal handleClose={() => {setShowEditGoalModal(false)}}/>}
+
     </>
   )
 }
