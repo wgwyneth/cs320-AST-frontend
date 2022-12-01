@@ -16,12 +16,36 @@ const EditGoalModal = props => {
                     <select className="dropdownInput" name="status" id="status" >
                         <option value="Active">Active</option>
                         <option value="Complete">Complete</option>
-                        <option value="Incomplete">Incomplete</option>
+                        <option value="Incomplete">Inactive</option>
                     </select>
 
                     <div className="close-titleContainer">
                       <center>
-                          <h3 className="updateTitle" onClick={props.handleClose}>
+                          <h3 className="updateTitle" onClick={
+                            async () => {props.handleClose();
+                            var stat = document.getElementById("status").value;
+                            const response = await fetch('http://localhost:9000/api/goals/update', {
+                            method: 'POST',
+                            body: JSON.stringify({"goalid": props.GoalID, "newstatus": stat}),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                            });
+                            response.json().then((data) => {
+                            try{
+                                if (data.goalid){
+                                    props.handleClose()
+                                }
+                            }
+                            catch{
+                                console.log("error in creating goal");
+                                alert("Wrong Password!");
+                                props.handleClose()
+                            }
+                            });
+                            }
+                            }>
                               Finish
                           </h3>
                       </center>

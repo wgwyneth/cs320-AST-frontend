@@ -13,9 +13,9 @@ const SelectGoalActionModal = props => {
                         <div className="option" onClick={() => {console.log(props); props.setShowCommentModal(true); props.handleClose()}}>
                             View/Add Comments    
                         </div>
-                        <div className="option" onClick={() => {props.setShowEditGoalModal(true); props.handleClose();}}>
+                        {props.CanEdit && <div className="option" onClick={() => {props.setShowEditGoalModal(true); props.handleClose();}}>
                             Update Goals
-                        </div>
+                        </div>}
                         <div className="option" onClick={() => {props.handleClose()}}>
                             Return
                         </div>

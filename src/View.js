@@ -8,7 +8,7 @@ class View extends React.Component {
     super(props);
     this.state={data: [], isLoaded: false};
     const getData = async () => {
-      var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/1')
+      var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/' + localStorage.getItem('EmpID'))
       .then((response) => {
         if(!response.ok) throw new Error(response.status);
         else return response.json();

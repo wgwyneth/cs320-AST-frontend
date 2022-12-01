@@ -11,8 +11,7 @@
     color: #005151; 
     height: fit-content;
 }
-.pagination{
-}
+
 main{
     font-family: 'M PLUS Rounded 1c', sans-serif;
     background-color: #30CEBB;
@@ -53,4 +52,7 @@ td{
     color: #005151;
     border-top: 1px solid #cfd0d0;
     border-bottom: 1px solid #cfd0d0;
+}
+.EditButton {
+    cursor: pointer;
 }
