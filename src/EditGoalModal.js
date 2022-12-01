@@ -71,17 +71,17 @@ const EditGoalModal = props => {
 
                     <br></br>
 
-                    <label htmlfor="comments">
+                    {/* <label htmlfor="comments">
                         <div className="sectionTitleContainer">
                             <p className="comments">
-                                Description:
+                                Comments:
                             </p>
                         </div>
                     </label>
 
                     <textarea className="textArea" id="comments" name="comments" rows="4" cols="50" maxlength="500">Enter comments here...</textarea>
 
-                    <br></br>
+                    <br></br> */}
 
                     <div className="close-titleContainer">
                       <center>

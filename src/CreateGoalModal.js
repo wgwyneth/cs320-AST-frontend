@@ -59,7 +59,9 @@ const CreateGoalModal = props => {
                         </div>
                     </label>
 
-                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500" value={description} onChange={setDesc}>This is my goal description</textarea>
+                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500" value={description} onChange={setDesc}>
+                        This is my goal description
+                    </textarea>
 
                     <br></br>
 

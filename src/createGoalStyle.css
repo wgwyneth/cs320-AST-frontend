@@ -19,6 +19,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     margin: auto;
     border: 3px solid #888;
     width: 50%;
+    /* color:#087C79; */
     border-radius: 25px;
 }
 /* The Close Button */
@@ -27,40 +28,65 @@ body {font-family: Arial, Helvetica, sans-serif;}
     cursor: pointer;
 }
 .titleContainer {
-  background-color:#F5F5F5;
-  border-radius: 22px;
+  background-color:#005151; 
+  border-radius: 21px;
+  /* width:max-content; */
+  /* Add width to modify the width of the title "Create/Manage Goal" */
 }
 
 .title {
-    padding-top: 15px; 
-    padding-bottom: 15px;
     text-align: center;
+    padding-top: 5px; 
+    padding-bottom: 1px;
+    color:white;
+    font-size: x-large;
 }
 .sectionTitleContainer{
-    background-color:#F5F5F5;
+    /* background-color:#F5F5F5;
+     */
+     background-color: #087C79;
+     color:white;
+     width: 140px;
+     /* Change this width size to change the width of the containers of all other headings. 
+     Orginally it wasnt set at all, so feel free to comment it out. */
 }
 .sectionTitle{
     font-size:20px; 
     padding: 5px;
     padding-left: 5px;
+    color:white;
+    font-size: large;
 }
 .textInput{
     width: 50%; 
     margin-left: 10px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    /* font-size: large; */
 }
 .dateInput{
     margin-left: 10px;
-    width: 25%
+    width: 25%;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    /* font */
 }
 .textArea{
     margin-left: 10px; 
+    margin-bottom: 0px;
     resize: none;
 }
-.dropdownInput{
-    margin-left: 10px; 
+.dropdownInput{ 
+    margin-left: 10px;
+    margin-bottom: 8px;
 }
 .smallTitle{
-    padding:5px
+    padding:3px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    /* Change this to change the style for all smaller headings */
+    font-size: 20px;
 }
 .updateTitle{
     color: white; 
@@ -68,11 +94,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
     padding-bottom: 5px;
 }
 .close-titleContainer {
-    background-color:#30CEBB;
-    border-radius: 22px;
+    background-color:#005151;
+    border-radius: 3px;
     margin-bottom: 20px;
-    margin-left: 60px;
-    margin-right: 60px;
+    text-align: center;
+    margin-left: 140px;
+    margin-right: 140px;
+    /* Change this to modify the "Finish" Button */
     cursor:pointer;
   }
   input[type=text]{
@@ -84,11 +112,19 @@ body {font-family: Arial, Helvetica, sans-serif;}
     }
 
     .description{
-        background: #f1f1f1;
-        padding: 10px;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -o-border-radius: 10px;
-        -ms-border-radius: 10px;
+        /* padding:3px; */
+        background: #087C79;
+        border-radius: 22px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        /* padding: 5px; */
+        /* width: 50%;
+        -moz-border-radius: 5px;
+        -webkit-border-radius:5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px; */
         border-radius: 10px;
+        color:white;
+        font-size: large;
     }

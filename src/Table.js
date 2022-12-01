@@ -205,9 +205,9 @@ function Table({ columns, data }) {
       </div>
       Outputs filter object for debugging purposes
       <div>
-       <pre>
+       {/* <pre>
         <code>{JSON.stringify(state, null, 2)}</code>
-        </pre>
+        </pre> */}
       </div>  
         {/* {show && <CreateGoalModal handleClose={handleShowCreate} */}
         {showCreateGoalModal && <CreateGoalModal handleClose={() => {setShowCreateGoalModal(false)}}/>}
