@@ -47,6 +47,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
      background-color: #087C79;
      color:white;
      width: 140px;
+     margin-left: 10px;
      /* Change this width size to change the width of the containers of all other headings. 
      Orginally it wasnt set at all, so feel free to comment it out. */
 }
@@ -102,29 +103,29 @@ body {font-family: Arial, Helvetica, sans-serif;}
     margin-right: 140px;
     /* Change this to modify the "Finish" Button */
     cursor:pointer;
-  }
-  input[type=text]{
-     border: 1px solid #0a0a0a;
-     color: #080808;
-     width: 250px;
-     height: 30px;
-     padding-left: 0px;
-    }
+}
+input[type=text]{
+    border: 1px solid #0a0a0a;
+    color: #080808;
+    width: 250px;
+    height: 30px;
+    padding-left: 0px;
+}
 
-    .description{
+.description{
         /* padding:3px; */
-        background: #087C79;
+    background: #087C79;
         border-radius: 22px;
         margin-bottom: 10px;
         margin-left: 10px;
         margin-right: 10px;
-        /* padding: 5px; */
+    /* padding: 5px; */
         /* width: 50%;
-        -moz-border-radius: 5px;
-        -webkit-border-radius:5px;
-        -o-border-radius: 5px;
-        -ms-border-radius: 5px; */
-        border-radius: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius:5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px; */
+    border-radius: 10px;
         color:white;
         font-size: large;
-    }
+}

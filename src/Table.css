@@ -2,11 +2,14 @@
     background-color:  #F5F5F5;
     border-collapse: separate;
     border-radius: 25px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
     width: 75%;
     padding: 10px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     color: #005151; 
+    height: fit-content;
 }
 .pagination{
 }
@@ -17,8 +20,6 @@ main{
 }
 .table-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     padding: 33px 30px;
     width: 100%;
@@ -29,7 +30,7 @@ main{
     padding-top: 100px;
 }
 .wrapper {
-    width: 1170px;
+    width: 1240px;
 }
 table {
     border-collapse: separate;
@@ -45,6 +46,7 @@ td, th {
 th {
     text-align: left;
     background-color:  #005151 ;
+    white-space: nowrap;
 }
 td{
     background-color: #F5F5F5;
