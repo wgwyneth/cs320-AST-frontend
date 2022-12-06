@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react'
 import Table, { SelectColumnFilter } from './Table'
+import Comments from './Comments';
+import  './Table.css'
 
 class View extends React.Component {
   constructor(props){
     super(props);
     this.state={data: [], isLoaded: false};
     const getData = async () => {
-      var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/1')
+      var dataToGet = fetch('http://localhost:9000/api/goals/getAllGoals/' + localStorage.getItem('EmpID'))
       .then((response) => {
         if(!response.ok) throw new Error(response.status);
         else return response.json();
@@ -81,14 +83,24 @@ class View extends React.Component {
     ]
     
     return (
-      <>
-        <h1>My Goals</h1>
-        <div>
-          <Table columns={columns} data={this.state.data} />
-        </div>
-      </>
+      <div>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+      </style> 
+        <main>
+          <div className="top">
+            <h1 className="">My Goals</h1>
+          </div>
+          <div class="table-container">
+          <div class="wrapper">
+          <div class="table-head">
+            <Table columns={columns} data={this.state.data} />
+          </div>
+          </div>
+          </div>
+        </main>
+      </div>
     );
   }
 }
-
 export default View;

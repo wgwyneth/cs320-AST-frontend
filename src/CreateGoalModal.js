@@ -59,7 +59,9 @@ const CreateGoalModal = props => {
                         </div>
                     </label>
 
-                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500" value={description} onChange={setDesc}>This is my goal description</textarea>
+                    <textarea className="textArea" id="description" name="description" rows="4" cols="50" maxlength="500" value={description} onChange={setDesc}>
+                        This is my goal description
+                    </textarea>
 
                     <br></br>
 
@@ -86,7 +88,7 @@ const CreateGoalModal = props => {
                     <select className="dropdownInput" name="status" id="status" >
                         <option value="Active">Active</option>
                         <option value="Complete">Complete</option>
-                        <option value="Incomplete">Incomplete</option>
+                        <option value="Incomplete">Inactive</option>
                     </select>
 
                     <br></br>

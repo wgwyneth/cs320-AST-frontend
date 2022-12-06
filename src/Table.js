@@ -4,13 +4,11 @@ import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, use
 import { useState } from "react";
 import CreateGoalModal from './CreateGoalModal';
 import EditGoalModal from './EditGoalModal';
+import SelectGoalActionModal from './SelectGoalAction';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-
-
-
-
+import Comments from './Comments';
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -79,7 +77,10 @@ function Table({ columns, data }) {
   // onClick for Create Goal Button
   const [showCreateGoalModal, setShowCreateGoalModal] = useState(false);
   const [showEditGoalModal, setShowEditGoalModal] = useState(false);
-  
+  const [showGoalActionModal, setShowGoalActionModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
+  const [EditGoal, setShowEditGoal] = useState(0);
+  const [GoalID, setShowGoalID] = useState(0);
 
   // Use the state and functions returned from useTable to build your UI
   const {
@@ -129,7 +130,7 @@ function Table({ columns, data }) {
               <label for={column.id}>{column.render("Header")}: </label>
               {column.render("Filter")}
               <button onClick={() => setShowCreateGoalModal(true)}>Create Goal</button>
-              <button onClick={() => setShowEditGoalModal(true)}>Manage Goal</button>
+              <button onClick={() => setShowGoalActionModal(true)}>Manage Goal</button>
             </div>
           ) : null
         )
@@ -154,6 +155,7 @@ function Table({ columns, data }) {
                   </span>
                 </th>
               ))}
+              <th>Edit Goal</th>
             </tr>
           ))}
         </thead>
@@ -165,6 +167,7 @@ function Table({ columns, data }) {
                 {row.cells.map(cell => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
+                <td className='EditButton' onClick={() => {setShowEditGoal(parseInt(row.cells[1].value)); setShowGoalID(parseInt(row.cells[0].value)); setShowGoalActionModal(true);}}> Edit </td>
               </tr>
             )
           })}
@@ -205,13 +208,16 @@ function Table({ columns, data }) {
       </div>
       Outputs filter object for debugging purposes
       <div>
-       <pre>
+       {/* <pre>
         <code>{JSON.stringify(state, null, 2)}</code>
-        </pre>
+        </pre> */}
       </div>  
         {/* {show && <CreateGoalModal handleClose={handleShowCreate} */}
         {showCreateGoalModal && <CreateGoalModal handleClose={() => {setShowCreateGoalModal(false)}}/>}
-        {showEditGoalModal && <EditGoalModal handleClose={() => {setShowEditGoalModal(false)}}/>}
+        {showGoalActionModal && <SelectGoalActionModal CanEdit = {localStorage.getItem('EmpID') == EditGoal} setShowCommentModal = {setShowCommentModal} setShowEditGoalModal = {setShowEditGoalModal} handleClose={() => {setShowGoalActionModal(false)}}/>}
+        {showCommentModal && <Comments GoalID = {GoalID} handleClose={() => setShowCommentModal(false)} />}
+        {showEditGoalModal && <EditGoalModal GoalID = {GoalID} handleClose={() => {setShowEditGoalModal(false)}}/>}
+
     </>
   )
 }

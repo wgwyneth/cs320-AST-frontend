@@ -6,8 +6,9 @@
     justify-content: left;
     padding: 1em;
     /* margin-bottom: 2em; */
-    background-color: #016FB9;
+    background-color: #005151;
     color: rgb(255, 255, 255);
+    font-family: "PT Sans", "Source Sans Pro", Tahoma, sans-serif;
   }
 
 .logo_img {
