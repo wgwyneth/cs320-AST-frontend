@@ -130,7 +130,6 @@ function Table({ columns, data }) {
               <label for={column.id}>{column.render("Header")}: </label>
               {column.render("Filter")}
               <button onClick={() => setShowCreateGoalModal(true)}>Create Goal</button>
-              <button onClick={() => setShowGoalActionModal(true)}>Manage Goal</button>
             </div>
           ) : null
         )
