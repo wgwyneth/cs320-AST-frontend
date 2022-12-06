@@ -1,4 +1,4 @@
-/*  src/Title.css  */
+
 .Header {
     box-sizing: border-box;
     width: 100%;
@@ -12,6 +12,8 @@
   }
 
 .logo_img {
+    border-collapse: collapse;
+    border-radius: 20px;
     width: auto;
     height: 50px;
     padding-right: 30px;

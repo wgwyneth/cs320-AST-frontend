@@ -3,8 +3,8 @@ import "./createGoalStyle.css"
 import { useState } from "react";
 
 const CreateGoalModal = props => {
-    let [goalname, setGoalname] = useState("");
-    let [description, setDescription] = useState("");
+    let [goalname, setGoalname] = useState("Goal 1");
+    let [description, setDescription] = useState("Add Description for Goal Here");
     let [startdate, setStartdate] = useState("");
     let [enddate, setEnddate] = useState("");
     let [status, setStatus] = useState("");
