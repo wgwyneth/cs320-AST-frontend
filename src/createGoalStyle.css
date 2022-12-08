@@ -30,7 +30,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .titleContainer {
   background-color:#005151; 
   border-radius: 21px;
-  /* width:max-content; */
+  /* width: 30px;; */
   /* Add width to modify the width of the title "Create/Manage Goal" */
 }
 .title {
@@ -86,9 +86,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
     padding:3px;
     margin-top: 10px;
     margin-left: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     /* Change this to change the style for all smaller headings */
     font-size: 20px;
+    /* border-radius: 10px; */
 }
 .updateTitle{
     color: white; 
@@ -114,11 +115,12 @@ input[type=text]{
 }
 .description{
         /* padding:3px; */
+    font-size: 20px;
     background: #087C79;
-        border-radius: 22px;
-        margin-bottom: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
     /* padding: 5px; */
         /* width: 50%;
     -moz-border-radius: 5px;
@@ -126,8 +128,8 @@ input[type=text]{
     -o-border-radius: 5px;
     -ms-border-radius: 5px; */
     border-radius: 10px;
-        color:white;
-        font-size: large;
+    color:white;
+    
 }
 .xButton{
     position: relative;
