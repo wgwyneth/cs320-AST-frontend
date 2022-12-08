@@ -204,9 +204,6 @@ function Table({ columns, data }) {
             </option>
           ))}
         </select>
-      </div>
-      Outputs filter object for debugging purposes
-      <div>
        {/* <pre>
         <code>{JSON.stringify(state, null, 2)}</code>
         </pre> */}
