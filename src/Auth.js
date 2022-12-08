@@ -25,7 +25,7 @@ export default function (props) {
 
   return (
     <div className="Auth-form-container" onLoad={loggedIn}>
-         <img className="welcome_img" src={welcome}/>
+      <img className="welcome_img" src={welcome} />
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
@@ -36,8 +36,7 @@ export default function (props) {
               className="form-control mt-1"
               placeholder="Enter username"
               value={username}
-              onChange={setUser}
-            />
+              onChange={setUser} />
           </div>
           <div className="form-group mt-3">
             <label>Password</label>
@@ -46,33 +45,32 @@ export default function (props) {
               className="form-control mt-1"
               placeholder="Enter password"
               value={password}
-              onChange={setPass}
-            />
+              onChange={setPass} />
           </div>
           <div className="d-grid gap-2 mt-3">
             <button type="button" className="btn btn-primary" onClick={async () => {
-                const response = await fetch('http://localhost:9000/api/login', {
-                  method: 'POST',
-                  body: JSON.stringify({email: username, password: password}),
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+              const response = await fetch('http://localhost:9000/api/login', {
+                method: 'POST',
+                body: JSON.stringify({ email: username, password: password }),
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                }
+              });
+              response.json().then((data) => {
+                try {
+                  if (data[0].EmpID) {
+                    setCookieFunction(data[0].EmpID);
+                    console.log("authen");
+                    navigate('/view');
                   }
-                });
-                response.json().then((data) => {
-                  try{
-                    if (data[0].EmpID){
-                      setCookieFunction(data[0].EmpID);
-                      console.log("authen");
-                      navigate('/view');
-                    }
-                  }
-                  catch{
-                    console.log("wrong login");
-                    alert("Wrong Password!");
-                  }
-                });
-              }}>
+                }
+                catch {
+                  console.log("wrong login");
+                  alert("Wrong Password!");
+                }
+              });
+            } }>
               Submit
             </button>
           </div>
