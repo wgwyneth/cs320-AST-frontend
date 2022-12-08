@@ -5,6 +5,7 @@ var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
+
 today = yyyy + '-' + mm + '-' + dd;
 const CreateGoalModal = props => {
     let [goalname, setGoalname] = useState("Goal name here...");
@@ -14,21 +15,25 @@ const CreateGoalModal = props => {
     const setName = (usr) => {
         setGoalname(usr.target.value);
     }
+   
     const setDesc = (usr) => {
         setDescription(usr.target.value);
     }
     const setStart = (usr) => {
         setStartdate(usr.target.value);
     }
+    
     const setEnd = (usr) => {
         setEnddate(usr.target.value);
     }
+
     return(
         <>
             <div id="myModal" className="modal">
                 <div className="modal-content">
                     <div className="titleContainer">
-                        <h3 className="title">Create Goal</h3>
+                        <button className="xButton" onClick={props.handleClose}>X</button>
+                        <h1 className="title">Create Goal</h1>
                     </div>
                     <label className="sectionTitleContainer smallTitle" htmlfor="goalName">
                         Goal Name:
@@ -106,8 +111,9 @@ const CreateGoalModal = props => {
                           </h3>
                       </center>
                     </div>
-                </div>
+                </div>  
             </div>
+          
       </>
     );
 }

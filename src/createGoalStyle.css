@@ -33,13 +33,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   /* width:max-content; */
   /* Add width to modify the width of the title "Create/Manage Goal" */
 }
-
 .title {
     text-align: center;
-    padding-top: 5px; 
-    padding-bottom: 1px;
     color:white;
-    font-size: x-large;
+    font-size: 30px;
+    padding-top: 5px;
+    margin-left: 40px;
 }
 .sectionTitleContainer{
     /* background-color:#F5F5F5;
@@ -48,6 +47,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
      color:white;
      width: 140px;
      margin-left: 10px;
+     align-content: space-between;
+     flex-direction: column;
      /* Change this width size to change the width of the containers of all other headings. 
      Orginally it wasnt set at all, so feel free to comment it out. */
 }
@@ -111,7 +112,6 @@ input[type=text]{
     height: 30px;
     padding-left: 0px;
 }
-
 .description{
         /* padding:3px; */
     background: #087C79;
@@ -128,4 +128,10 @@ input[type=text]{
     border-radius: 10px;
         color:white;
         font-size: large;
+}
+.xButton{
+    position: relative;
+    float: right;
+    margin: 10px;
+    /* align-items: flex-end; */
 }
