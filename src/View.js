@@ -25,9 +25,9 @@ class View extends React.Component {
           .then((data) => {
             if(data[0])
               {
-                data[0].StartDate = (data[0].StartDate.toString().split('T')[0]);
-                data[0].EndDate = (data[0].EndDate.toString().split('T')[0]);
-                // data[0].StartDate = data[0].StartDate
+                
+                data[0].startdate = (data[0].startdate.toString().split('T')[0]);
+                data[0].enddate = (data[0].enddate.toString().split('T')[0]);
                 goals.push(data[0]);
               }
           })
@@ -53,34 +53,42 @@ class View extends React.Component {
     const {goals, isLoaded} = this.state;
     const columns = [
       {
+        Header: "First Name",
+        accessor: 'firstname',
+        Filter: SelectColumnFilter,
+        filter: 'includes'
+      },
+      {
+        Header: "Last Name",
+        accessor: "lastname",
+      },
+      {
         Header: "GoalID",
-        accessor: 'GoalID',
+        accessor: 'goalid',
       },
       {
         Header: "Employee ID",
-        accessor: 'EmpID',
-        Filter: SelectColumnFilter,
-        filter: 'inclucdes'
+        accessor: 'empid',
       },
       {
         Header: "Start Date",
-        accessor: 'StartDate'
+        accessor: 'startdate'
       },
       {
         Header: "End Date",
-        accessor: 'EndDate',
+        accessor: 'enddate',
       },
       {
         Header: "Goal Type",
-        accessor: "GoalType"
+        accessor: "goaltype"
       },
       {
         Header: "Status",
-        accessor: "Status"
+        accessor: "status"
       },
       {
         Header: "Description",
-        accessor: 'Description'
+        accessor: 'description'
       },
       {
         Header: "Goal Name",
