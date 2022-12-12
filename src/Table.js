@@ -72,7 +72,7 @@ export function SelectColumnFilter({
   )
 }
 
-function Table({ columns, data }) {
+function Table({ columns, data, addGoal }) {
 
   // onClick for Create Goal Button
   const [showCreateGoalModal, setShowCreateGoalModal] = useState(false);
@@ -212,7 +212,7 @@ function Table({ columns, data }) {
         </pre> */}
       </div>  
         {/* {show && <CreateGoalModal handleClose={handleShowCreate} */}
-        {showCreateGoalModal && <CreateGoalModal handleClose={() => {setShowCreateGoalModal(false)}}/>}
+        {showCreateGoalModal && <CreateGoalModal handleClose={() => {setShowCreateGoalModal(false)}} addGoal={(goal) => addGoal(goal)}/>}
         {showGoalActionModal && <SelectGoalActionModal CanEdit = {localStorage.getItem('EmpID') == EditGoal} setShowCommentModal = {setShowCommentModal} setShowEditGoalModal = {setShowEditGoalModal} handleClose={() => {setShowGoalActionModal(false)}}/>}
         {showCommentModal && <Comments GoalID = {GoalID} handleClose={() => setShowCommentModal(false)} />}
         {showEditGoalModal && <EditGoalModal GoalID = {GoalID} handleClose={() => {setShowEditGoalModal(false)}}/>}

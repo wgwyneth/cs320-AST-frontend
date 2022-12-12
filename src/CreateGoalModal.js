@@ -131,7 +131,9 @@ const CreateGoalModal = props => {
                             response.json().then((data) => {
                             try{
                                 if (data.goalid){
-                                    props.handleClose()
+                                    var goal = {GoalID: data.goalid, EmpID: empid, StartDate: startdate, EndDate: enddate, Description: description, GoalType: catVal, Status: statVal, goalname: goalname}
+                                    props.addGoal(goal);
+                                    props.handleClose();
                                 }
                             }
                             catch{

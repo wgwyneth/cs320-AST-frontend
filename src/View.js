@@ -42,7 +42,13 @@ class View extends React.Component {
     }
     getData();
   }
-  
+
+  addGoal(goal) {
+    this.setState({data: [...this.state.data, goal], isLoaded: true});
+    console.log(goal);
+    console.log(this.state.data);
+  }
+
   render() {
     const {goals, isLoaded} = this.state;
     const columns = [
@@ -94,7 +100,7 @@ class View extends React.Component {
           <div class="table-container">
           <div class="wrapper">
           <div class="table-head">
-            <Table columns={columns} data={this.state.data} />
+            <Table columns={columns} data={this.state.data} addGoal = {(goal) => this.addGoal(goal)}/>
           </div>
           </div>
           </div>
