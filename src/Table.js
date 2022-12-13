@@ -166,7 +166,7 @@ function Table({ columns, data, addGoal }) {
                 {row.cells.map(cell => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
-                <td className='EditButton' onClick={() => {setShowEditGoal(parseInt(row.cells[1].value)); setShowGoalID(parseInt(row.cells[0].value)); setShowGoalActionModal(true);}}> Edit </td>
+                <td className='EditButton' onClick={() => {setShowEditGoal(parseInt(row.cells[3].value)); setShowGoalID(parseInt(row.cells[0].value)); setShowGoalActionModal(true);}}> Edit </td>
               </tr>
             )
           })}
